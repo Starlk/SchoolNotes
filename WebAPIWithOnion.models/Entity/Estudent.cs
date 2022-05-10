@@ -11,7 +11,9 @@ namespace WebAPIWithOnion.models.Entity
     {
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string codigo { get; set; }
+        public string codde { get; set; }
+        public DateTime RegisterDate { get; set; }
+    
 
     }
 }
