@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApiWithOnion.core.Base.Base
 {
-    public interface IBase
+    public interface IBaseDto
     {
         public int Id { get; set; }
         public bool isDelete {get;set;}

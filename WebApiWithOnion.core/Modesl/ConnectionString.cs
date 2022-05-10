@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApiWithOnion.core.Base.Base
+namespace WebApiWithOnion.core.Modesl
 {
-    public interface IBase
+    public class ConnectionString
     {
-       int Id { get; set; }
-       bool isDelete {get;set;}
+        public string DefaultConnection { get; set; }   
     }
 }
