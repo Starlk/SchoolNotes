@@ -13,6 +13,7 @@ namespace WebAPIWithOnion.models.Entity
         public string Description { get; set; }
         public string Image { get; set; }
         public bool IsPublic { get; set; }
+        public DateTime DateCreated { get; set; }
        
     }
 }
