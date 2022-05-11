@@ -16,19 +16,25 @@ namespace WebApiWithOnion.models.Repository
         public Repository(SchoolDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<T>();
+            _dbSet= context.GetDbSet<T>();
         }
-        public void create(T entity)
+        public void Create(T entity)
         {
-
             _dbSet.Add(entity);
-            _context.SaveChanges();
             
+             
+        }
+        public async void save() 
+        {
+           await _context.SaveChangesAsync();
         }
 
-        public void delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            T entity = await GetById(id);
+            if (entity == null) return false;
+            _dbSet.Remove(entity);
+            return true;
         }
 
         public void Dispose()
@@ -36,24 +42,21 @@ namespace WebApiWithOnion.models.Repository
             throw new NotImplementedException();
         }
 
-        public void getAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
+
         }
 
-        public T getOne(int id)
+        public async Task<T> GetById(int id)
         {
-            
-            return null;
+            var datos =  await _dbSet.FindAsync(id);
+            return datos;
         }
 
-        public void update(int id, T entity)
+        public async void Update(int id, T entity)
         {
-            throw new NotImplementedException();
+            if (await Delete(id)) _dbSet.Add(entity);
         }
-
-  
-
-
     }
 }

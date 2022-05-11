@@ -8,12 +8,11 @@ namespace WebApiWithOnion.models.Repository
 {
     internal interface IRepository<T> : IDisposable where T : class
     {
-        void create(T entity);
-        void update(int id, T entity);
-        void delete(int id);
-        T getOne(int id);
-
-        void getAll();
-        
+        void Create(T entity);
+        void  Update(int id ,T entity);
+        Task<bool> Delete(int id);
+        Task<T> GetById(int id);
+        Task<IEnumerable<T>> GetAll();
+        void save();
     }
 }

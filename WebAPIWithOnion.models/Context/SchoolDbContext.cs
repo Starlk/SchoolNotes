@@ -19,6 +19,8 @@ namespace WebApiWithOnion.models.Context
         public DbSet<Estudent> estudents { get; set; }
         public DbSet<Note> notes { get; set; }
 
+
+        public DbSet<T> GetDbSet<T>() where T : class =>Set<T>();
         //protected override void OnConfiguring(DbContextOptionsBuilder builder)
         //{
         //    builder.UseSqlServer(_conf.GetConnectionString("defaultdConnection"));
